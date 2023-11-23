@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/multirangeslider/static/css/main.0a94e9a2.css",
+    "main.js": "/multirangeslider/static/js/main.8c728b7d.js",
+    "static/js/787.631c5fd2.chunk.js": "/multirangeslider/static/js/787.631c5fd2.chunk.js",
+    "index.html": "/multirangeslider/index.html",
+    "main.0a94e9a2.css.map": "/multirangeslider/static/css/main.0a94e9a2.css.map",
+    "main.8c728b7d.js.map": "/multirangeslider/static/js/main.8c728b7d.js.map",
+    "787.631c5fd2.chunk.js.map": "/multirangeslider/static/js/787.631c5fd2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0a94e9a2.css",
+    "static/js/main.8c728b7d.js"
+  ]
+}
