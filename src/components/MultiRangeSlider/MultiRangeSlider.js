@@ -9,7 +9,6 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
   const maxValRef = useRef(max);
   const range = useRef(null);
 
-  // Convert to percentage
   const getPercent = useCallback(
     (value) => Math.round(((value - min) / (max - min)) * 100),
     [min, max]
@@ -43,16 +42,48 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
       <div className="slider">
         <div className="slider__track" />
         <div ref={range} className="slider__range" />
-        <div className="slider__left-value">{minVal} ₽</div>
-        <div className="slider__right-value">{maxVal} ₽</div>
+        {/* <div className="slider__left-value">{minVal} ₽</div>
+        <div className="slider__right-value">{maxVal} ₽</div> */}
+        <div className="slider__left-value">
+          <input
+            // className="slider__left-value"
+            type="number"
+            value={minVal}
+            placeholder=""
+            min={0}
+            max={892}
+            onChange={(event) => {
+              const value = event.target.value;
+              setMinVal(value);
+              // minValRef.current = minVal;
+            }}
+          />
+          ₽
+        </div>
+        <div className="slider__right-value">
+          <input
+            // className="slider__right-value"
+            type="number"
+            value={maxVal}
+            placeholder=""
+            min={108}
+            max={1000}
+            onChange={(event) => {
+              const value = event.target.value;
+              setMaxVal(value);
+              maxValRef.current = value;
+            }}
+          />
+          ₽
+        </div>
       </div>
       <input
         type="range"
         min={min}
         max={max}
-        value={minVal}
+        value={minVal || 0}
         onChange={(event) => {
-          const value = Math.min(Number(event.target.value), maxVal - 106);
+          const value = Math.min(Number(event.target.value), maxVal - 108);
           setMinVal(value);
           minValRef.current = value;
         }}
@@ -63,16 +94,14 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
         type="range"
         min={min}
         max={max}
-        value={maxVal}
+        value={maxVal || minVal + 108}
         onChange={(event) => {
-          const value = Math.max(Number(event.target.value), minVal + 106);
+          const value = Math.max(Number(event.target.value), minVal + 108);
           setMaxVal(value);
           maxValRef.current = value;
         }}
         className="thumb thumb--right"
       />
-
-      
     </div>
   );
 };
@@ -80,7 +109,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
 MultiRangeSlider.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };
 
 export default MultiRangeSlider;
